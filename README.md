@@ -1,4 +1,6 @@
 # Multiple server with infinite capacity - (M/M/c):(oo/FIFO)
+## Developed by : AMSAVARADHAN M
+## Register number : 212225230014
 ## Aim :
 To find (a) average number of materials in the system (b) average number of materials in the conveyor (c) waiting time of each material in the system (d) waiting time of each material in the conveyor, if the arrival  of materials follow poisson process with the mean interval time 10 seconds, serivice time of two lathe machine follow exponential distribution with mean serice time 1 second and average service time of robot is 7seconds.
 
@@ -19,11 +21,68 @@ Queuing are the most frequently encountered problems in everyday life. For examp
 
 ## Experiment:
 
+<img width="723" height="390" alt="444857969-8224fba8-d758-4665-a06e-bc4cba2116aa" src="https://github.com/user-attachments/assets/404f78a7-34e0-4bdb-99d6-fa2540b134ad" />
+
+<img width="726" height="409" alt="444857997-153d7d96-e10d-4440-955a-ebfe156f4d3e" src="https://github.com/user-attachments/assets/d63e2135-843e-47f3-82a1-b7e4b31eb38e" />
+
 
 ## Program
+# Getting Inputs
+ArrivalTime = float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
+ServiceTime = float(input("Enter the mean inter service time of Lathe Machine (in secs): "))
+RobotTime = float(input("Enter the Additional time taken for the Robot (in secs): "))
+NumberOfServers = int(input("Number of service centre : "))
+
+# Calculating Lambda and Mu
+Lambda = 1 / ArrivalTime
+Mu = 1 / (ServiceTime + RobotTime)
+
+print("Multiple Server with Infinite Capacity - (M/M/c):(∞/FIFO)")
+print("The mean arrival rate per second : %0.2f" % Lambda)
+print("The mean service rate per second : %0.2f" % Mu)
+
+# Utilization factor
+Rho = Lambda / (NumberOfServers * Mu)
+
+# Calculating P0 (Probability system is empty)
+sum_terms = 0
+for i in range(NumberOfServers):
+    sum_terms += (Lambda / Mu) ** i / math.factorial(i)
+
+last_term = ((Lambda / Mu) ** NumberOfServers) / (math.factorial(NumberOfServers) * (1 - Rho))
+TotalSum = sum_terms + last_term
+P0 = 1 / TotalSum
+
+# System performance measures (M/M/c)
+if Rho < 1:
+    Lq = ((P0 * ((Lambda / Mu) ** NumberOfServers) * Rho) /
+          (math.factorial(NumberOfServers) * ((1 - Rho) ** 2)))
+    Ls = Lq + (Lambda / Mu)
+    Ws = Ls / Lambda
+    Wq = Lq / Lambda
+
+    print("Average number of objects in the system : %0.2f" % Ls)
+    print("Average number of objects in the conveyor :  %0.2f" % Lq)
+    print("Average waiting time of an object in the system : %0.2f secs" % Ws)
+    print("Average waiting time of an object in the conveyor : %0.2f secs" % Wq)
+    print("Probability that the system is busy : %0.2f" % Rho)
+    print("Probability that the system is empty : %0.2f" % (1 - Rho))
+else:
+    print("Warning! Objects Over flow will happen in the conveyor")
 
 
 ## Output :
-
+--------------------------------------------------------------
+Multiple Server with Infinite Capacity - (M/M/c):(∞/FIFO)
+--------------------------------------------------------------
+The mean arrival rate per second : 0.10
+The mean service rate per second : 0.12
+Average number of objects in the system : 0.95
+Average number of objects in the conveyor :  0.15
+Average waiting time of an object in the system : 9.53 secs
+Average waiting time of an object in the conveyor : 1.52 secs
+Probability that the system is busy : 0.40
+Probability that the system is empty : 0.60
+--------------------------------------------------------------
 ## Result : 
-
+Thus the program is implemented and executed successfully.
