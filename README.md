@@ -27,6 +27,7 @@ Queuing are the most frequently encountered problems in everyday life. For examp
 
 
 ## Program
+~~~
 # Getting Inputs
 ArrivalTime = float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
 ServiceTime = float(input("Enter the mean inter service time of Lathe Machine (in secs): "))
@@ -69,9 +70,11 @@ if Rho < 1:
     print("Probability that the system is empty : %0.2f" % (1 - Rho))
 else:
     print("Warning! Objects Over flow will happen in the conveyor")
+~~~
 
 
 ## Output :
+~~~
 --------------------------------------------------------------
 Multiple Server with Infinite Capacity - (M/M/c):(∞/FIFO)
 --------------------------------------------------------------
@@ -84,5 +87,7 @@ Average waiting time of an object in the conveyor : 1.52 secs
 Probability that the system is busy : 0.40
 Probability that the system is empty : 0.60
 --------------------------------------------------------------
+~~~
+
 ## Result : 
 Thus the program is implemented and executed successfully.
