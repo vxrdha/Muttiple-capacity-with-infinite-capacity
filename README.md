@@ -28,12 +28,14 @@ Queuing are the most frequently encountered problems in everyday life. For examp
 
 
 ## Program
+
 ~~~
 # Getting Inputs
 ArrivalTime = float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
 ServiceTime = float(input("Enter the mean inter service time of Lathe Machine (in secs): "))
 RobotTime = float(input("Enter the Additional time taken for the Robot (in secs): "))
 NumberOfServers = int(input("Number of service centre : "))
+
 
 # Calculating Lambda and Mu
 Lambda = 1 / ArrivalTime
@@ -46,6 +48,7 @@ print("The mean service rate per second : %0.2f" % Mu)
 # Utilization factor
 Rho = Lambda / (NumberOfServers * Mu)
 
+
 # Calculating P0 (Probability system is empty)
 sum_terms = 0
 for i in range(NumberOfServers):
@@ -54,6 +57,7 @@ for i in range(NumberOfServers):
 last_term = ((Lambda / Mu) ** NumberOfServers) / (math.factorial(NumberOfServers) * (1 - Rho))
 TotalSum = sum_terms + last_term
 P0 = 1 / TotalSum
+
 
 # System performance measures (M/M/c)
 if Rho < 1:
@@ -73,10 +77,7 @@ else:
     print("Warning! Objects Over flow will happen in the conveyor")
 ~~~
 
-
 ## Output :
-
-
 
 ~~~
 --------------------------------------------------------------
@@ -92,9 +93,6 @@ Probability that the system is busy : 0.40
 Probability that the system is empty : 0.60
 --------------------------------------------------------------
 ~~~
-
-
-
 
 ## Result : 
 Thus the program is implemented and executed successfully.
