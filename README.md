@@ -75,6 +75,9 @@ else:
 
 
 ## Output :
+
+
+
 ~~~
 --------------------------------------------------------------
 Multiple Server with Infinite Capacity - (M/M/c):(∞/FIFO)
@@ -89,6 +92,9 @@ Probability that the system is busy : 0.40
 Probability that the system is empty : 0.60
 --------------------------------------------------------------
 ~~~
+
+
+
 
 ## Result : 
 Thus the program is implemented and executed successfully.
