@@ -36,7 +36,6 @@ ServiceTime = float(input("Enter the mean inter service time of Lathe Machine (i
 RobotTime = float(input("Enter the Additional time taken for the Robot (in secs): "))
 NumberOfServers = int(input("Number of service centre : "))
 
-
 # Calculating Lambda and Mu
 Lambda = 1 / ArrivalTime
 Mu = 1 / (ServiceTime + RobotTime)
@@ -48,7 +47,6 @@ print("The mean service rate per second : %0.2f" % Mu)
 # Utilization factor
 Rho = Lambda / (NumberOfServers * Mu)
 
-
 # Calculating P0 (Probability system is empty)
 sum_terms = 0
 for i in range(NumberOfServers):
@@ -57,7 +55,6 @@ for i in range(NumberOfServers):
 last_term = ((Lambda / Mu) ** NumberOfServers) / (math.factorial(NumberOfServers) * (1 - Rho))
 TotalSum = sum_terms + last_term
 P0 = 1 / TotalSum
-
 
 # System performance measures (M/M/c)
 if Rho < 1:
